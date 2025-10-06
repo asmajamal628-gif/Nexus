@@ -3,6 +3,11 @@ import { FileText, Upload, Download, Trash2, Share2 } from 'lucide-react';
 import { Card, CardHeader, CardBody } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { Badge } from '../../components/ui/Badge';
+import DocumentChamber from "../../components/document/DocumentChamber";
+
+
+
+
 
 const documents = [
   {
@@ -51,6 +56,7 @@ export const DocumentsPage: React.FC = () => {
         <Button leftIcon={<Upload size={18} />}>
           Upload Document
         </Button>
+        
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -93,6 +99,8 @@ export const DocumentsPage: React.FC = () => {
             </div>
           </CardBody>
         </Card>
+
+        
         
         {/* Document list */}
         <div className="lg:col-span-3">
@@ -163,14 +171,22 @@ export const DocumentsPage: React.FC = () => {
                       >
                         <Trash2 size={18} />
                       </Button>
+
+                      
                     </div>
                   </div>
+
+                  
                 ))}
               </div>
+              
             </CardBody>
           </Card>
+          <DocumentChamber />
         </div>
+        
       </div>
     </div>
+    
   );
 };

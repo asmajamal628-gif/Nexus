@@ -1,6 +1,22 @@
 import React from 'react';
+
+
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { WalletProvider } from "./context/WalletContext";
+import VideoCallUI from "./components/videocall/videocallui";
+import DocumentChamber from "./components/document/DocumentChamber";
+import PaymentsPage from "./pages/payments/PaymentsPage";
+import RequireRole from "./pages/auth/RequireRole";
+
+
+
+
+
+
+
+
+
 
 // Layouts
 import { DashboardLayout } from './components/layout/DashboardLayout';
@@ -27,14 +43,23 @@ import { SettingsPage } from './pages/settings/SettingsPage';
 import { HelpPage } from './pages/help/HelpPage';
 import { DealsPage } from './pages/deals/DealsPage';
 
+
+
+
 // Chat Pages
 import { ChatPage } from './pages/chat/ChatPage';
 
 function App() {
   return (
     <AuthProvider>
+      <WalletProvider>
       <Router>
         <Routes>
+        <Route path="/" element={<Navigate to="/payments" replace />} />
+        {/* Payment routes */}
+        <Route path="/payments" element={<DashboardLayout />}>
+              <Route index element={<PaymentsPage />} />
+            </Route>
           {/* Authentication Routes */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -43,7 +68,36 @@ function App() {
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route path="entrepreneur" element={<EntrepreneurDashboard />} />
             <Route path="investor" element={<InvestorDashboard />} />
+
           </Route>
+
+          <Route path="/documents" element={<DashboardLayout />}>
+  <Route index element={<DocumentsPage />} />        {/* /documents */}
+  <Route path="chamber" element={<DocumentChamber />} /> {/* /documents/chamber */}
+</Route>
+
+
+<Route path="/dashboard" element={<DashboardLayout />}>
+  <Route
+    path="entrepreneur"
+    element={
+      <RequireRole role="entrepreneur">
+        <EntrepreneurDashboard />
+      </RequireRole>
+    }
+  />
+  <Route
+    path="investor"
+    element={
+      <RequireRole role="investor">
+        <InvestorDashboard />
+      </RequireRole>
+    }
+  />
+</Route>
+
+  
+
           
           {/* Profile Routes */}
           <Route path="/profile" element={<DashboardLayout />}>
@@ -83,11 +137,17 @@ function App() {
           <Route path="/deals" element={<DashboardLayout />}>
             <Route index element={<DealsPage />} />
           </Route>
-          
+        
+  
           {/* Chat Routes */}
           <Route path="/chat" element={<DashboardLayout />}>
             <Route index element={<ChatPage />} />
             <Route path=":userId" element={<ChatPage />} />
+          </Route>
+
+          {/* ✅ Video Call Route */}
+          <Route path="/video-call" element={<DashboardLayout />}>
+            <Route index element={<VideoCallUI />} />
           </Route>
           
           {/* Redirect root to login */}
@@ -97,8 +157,18 @@ function App() {
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </Router>
+      </WalletProvider>
     </AuthProvider>
   );
 }
 
+
+
+
+
+
+
 export default App;
+
+
+

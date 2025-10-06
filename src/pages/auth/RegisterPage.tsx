@@ -5,6 +5,8 @@ import { useAuth } from '../../context/AuthContext';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 import { UserRole } from '../../types';
+import PasswordStrength from "../../pages/auth/PasswordStrength";
+
 
 export const RegisterPage: React.FC = () => {
   const [name, setName] = useState('');
@@ -17,6 +19,8 @@ export const RegisterPage: React.FC = () => {
   
   const { register } = useAuth();
   const navigate = useNavigate();
+
+  
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -131,6 +135,9 @@ export const RegisterPage: React.FC = () => {
               fullWidth
               startAdornment={<Lock size={18} />}
             />
+
+<PasswordStrength password={password} />
+
             
             <Input
               label="Confirm password"

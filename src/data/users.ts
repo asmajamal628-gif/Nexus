@@ -1,4 +1,5 @@
 import { Entrepreneur, Investor } from '../types';
+import { AppUser } from "../context/AuthContext";
 
 export const entrepreneurs: Entrepreneur[] = [
   {
@@ -122,15 +123,15 @@ export const investors: Investor[] = [
   }
 ];
 
-// Combined user data for lookup
-export const users = [...entrepreneurs, ...investors];
+// ✅ Explicitly type as AppUser[]
+export const users: AppUser[] = [...entrepreneurs, ...investors];
 
 // Helper function to find a user by ID
-export const findUserById = (id: string) => {
+export const findUserById = (id: string): AppUser | null => {
   return users.find(user => user.id === id) || null;
 };
 
 // Helper function to get a user by role
-export const getUsersByRole = (role: 'entrepreneur' | 'investor') => {
+export const getUsersByRole = (role: 'entrepreneur' | 'investor'): AppUser[] => {
   return users.filter(user => user.role === role);
 };

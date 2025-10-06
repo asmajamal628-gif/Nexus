@@ -10,8 +10,8 @@ export default {
           200: '#BFDBFE',
           300: '#93C5FD',
           400: '#60A5FA',
-          500: '#3B82F6',
-          600: '#2563EB',
+          500: '#8B5CF6',
+          600: '#7C3AED',
           700: '#1D4ED8',
           800: '#1E40AF',
           900: '#1E3A8A',
@@ -23,8 +23,8 @@ export default {
           200: '#99F6E4',
           300: '#5EEAD4',
           400: '#2DD4BF',
-          500: '#14B8A6',
-          600: '#0D9488',
+          500: '#EC4899',
+          600: '#DB2777',
           700: '#0F766E',
           800: '#115E59',
           900: '#134E4A',
@@ -60,11 +60,12 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter var', 'sans-serif'],
+        sans: ['Poppins', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-in': 'slideIn 0.3s ease-out',
+        'bounce-slow': 'bounce 2s infinite'
       },
       keyframes: {
         fadeIn: {

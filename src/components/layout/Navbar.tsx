@@ -77,7 +77,9 @@ export const Navbar: React.FC = () => {
                   <Link
                     key={index}
                     to={link.path}
-                    className="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                    className="inline-flex items-center text-sm font-medium text-gray-700 
+                    hover:text-primary-600 hover:bg-gray-50 px-3 py-2 rounded-md 
+                    transition-all duration-200 ease-in-out"
                   >
                     <span className="mr-2">{link.icon}</span>
                     {link.text}
@@ -88,6 +90,7 @@ export const Navbar: React.FC = () => {
                   variant="ghost"
                   onClick={handleLogout}
                   leftIcon={<LogOut size={18} />}
+                  className="hover:text-primary-600 transition-colors duration-200"
                 >
                   Logout
                 </Button>
@@ -105,10 +108,10 @@ export const Navbar: React.FC = () => {
             ) : (
               <div className="flex items-center space-x-4">
                 <Link to="/login">
-                  <Button variant="outline">Log in</Button>
+                  <Button variant="outline" className="hover:bg-primary-50">Log in</Button>
                 </Link>
                 <Link to="/register">
-                  <Button>Sign up</Button>
+                  <Button className="bg-primary-600 hover:bg-primary-700 text-white">Sign up</Button>
                 </Link>
               </div>
             )}

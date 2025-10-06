@@ -1,4 +1,6 @@
 export type UserRole = 'entrepreneur' | 'investor';
+export type TxType = "deposit" | "withdraw" | "transfer" | "fund";
+
 
 export interface User {
   id: string;
